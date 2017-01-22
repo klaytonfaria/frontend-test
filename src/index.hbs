@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta property="og:image" content="//static.catho.com.br/images/site/logo_fb.png">
+    <meta property="twitter:image" content="//static.catho.com.br/images/site/logo_fb.png">
+    <meta name="ios-catho-app" content="app-id=549669768">
+    <meta name="android-catho-app" content="app-id=br.com.appfactory.catho">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="cleartype" content="on">
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-title" content="Catho - Vagas de emprego">
+    <meta name="theme-color" content="#FFFFFF">
+    <meta name="description" content="São 169.003 vagas de emprego ativas nas melhores empresas em todo o Brasil e serviços exclusivos para apoiar sua carreira. Experimente por 7 dias grátis.">
+    <title>Empregos e Vagas de emprego em todo o Brasil | Catho</title>
+    {{#each htmlWebpackPlugin.files.css}}
+    <link rel="stylesheet" href="{{this}}">
+    {{/each}}
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch"></script>
+    {{#each htmlWebpackPlugin.files.js}}
+    <script src="{{this}}"></script>
+    {{/each}}
+  </body>
+</html>

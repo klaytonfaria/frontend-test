@@ -1,0 +1,29 @@
+// Default component settings
+$footer-height: 41px;
+$footer-width: 100%;
+$footer-font-color: #666;
+$footer-border-top: 1px solid $color-base;
+
+// Global component settings (Can overwrite default component settings)
+@import 'src/style-settings/settings';
+
+// Component styles
+
+.footer-container,
+.page-footer {
+  height: $footer-height;
+  width: $footer-width;
+  position: relative;
+}
+
+.page-footer {
+  background-image: linear-gradient(#DEDEDE, #F1F1F1);;
+  border-top: $footer-border-top;
+  color: $footer-font-color;
+
+  &.fixed {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+  }
+}

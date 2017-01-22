@@ -22,7 +22,7 @@ const path = require('path'),
       publicPath: config.publicPath,
       // filename: '../views/home/chat.html',
       filename: 'index.html',
-      template: '!!handlebars-loader!./src/index.hbs',
+      template: '!!handlebars-loader!./src/components/templates/index.hbs',
       inject: false
     }),
     new webpack.DefinePlugin({
@@ -32,6 +32,7 @@ const path = require('path'),
 
   devServer = {
     publicPath: config.publicPath,
+    contentBase: config.sourcePath,
     historyApiFallback: true,
     port: 3001,
     compress: false,

@@ -22,7 +22,31 @@
     {{/each}}
   </head>
   <body>
-    <div id="app"></div>
+    <div class="page-container">
+      <div class="header-container">
+        <header class="page-header">
+          <div class="content-wrapper">
+            <h1 id="logo" class="logo">Catho</h1>
+            <div class="access-area">
+              <form action="/#" method="POST" class="access-area-form">
+                <input type="submit" value="login" class="btn-login">
+              </form>
+            </div>
+          </div>
+        </header>
+      </div>
+      <div class="page-content">
+        <div class="content-wrapper"></div>
+          <div id="help-chat"></div>
+      </div>
+      <div class="footer-container">
+        <footer class="page-footer">
+            <div class="content-wrapper">
+              <a id="logo-link" href="/#"><img src="/images/logo.svg" alt="Catho" class="logo small"></a>
+            </div>
+        </footer>
+      </div>
+    </div>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch"></script>
     {{#each htmlWebpackPlugin.files.js}}
     <script src="{{this}}"></script>

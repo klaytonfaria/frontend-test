@@ -1,0 +1,36 @@
+// Importing colors set
+@import "src/style-settings/colors";
+
+// COMPONENTS SETTINGS
+
+// BASE
+$base-background-color: $color-white;
+
+// Header
+$header-height: 71px;
+$header-width: 100%;
+$header-background-color: #FFF;
+$header-background-color-dark: #005ca2;
+$header-font-color: #666;
+$header-font-color-dark: #FFF;
+$header-border-bottom: 1px solid #f5f5f5;
+
+// Logo
+$logo-width: 84px;
+$logo-height: 45px;
+$logo-width-small: 50px;
+$logo-height-small: 30px;
+
+// Buttons
+$button-font-size: 16px;
+$button-font-size-small: 84px;
+$button-color: $color-gray-dark;
+$button-border: 1px solid $color-gray;
+$button-border-hover: 1px solid $color-gray-dark;
+
+//Footer
+$footer-height: 41px;
+$footer-width: 100%;
+$footer-font-color: #666;
+$footer-border-top: 1px solid $color-base;
+

@@ -1,0 +1,31 @@
+// Default component settings
+$button-font-size: 16px;
+$button-font-size-small: 84px;
+$button-color: $color-gray-dark;
+$button-border: 1px solid $color-gray;
+$button-border-hover: 1px solid $color-gray-dark;
+
+// Global component settings (Can overwrite default component settings)
+@import 'src/style-settings/settings';
+
+// Component styles
+
+input[type="button"],
+input[type="submit"] {
+  padding: 6px 10px 8px;
+  font-size: $button-font-size;
+  color: $button-color;
+  border: $button-border;
+  background-color: transparent;
+  cursor: pointer;
+
+  &.small {
+    font-size: $button-font-size-small;
+  }
+  &:hover {
+    color: $color-white;
+    background-color: $button-color;
+    border: $button-border-hover;
+  }
+}
+

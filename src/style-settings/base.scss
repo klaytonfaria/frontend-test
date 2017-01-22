@@ -1,0 +1,52 @@
+// BASE style
+
+// Global settings
+@import 'src/style-settings/settings';
+
+// Components
+@import 'src/components/partials/header/header-style';
+@import 'src/components/elements/logo/logo-style';
+@import 'src/components/elements/buttons/buttons-style';
+@import 'src/components/partials/footer/footer-style';
+
+html,
+body,
+.page-container {
+  height: 100%;
+}
+.page-content {
+  min-height: -webkit-calc(100% - 112px);
+}
+
+.content-wrapper {
+  width: 98%;
+  max-width: 1180px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: $base-background-color;
+  *,
+  :after,
+  :before {
+    box-sizing: border-box;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}

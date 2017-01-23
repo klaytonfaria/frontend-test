@@ -1,0 +1,20 @@
+// Mixins
+
+// Screen's breakpoints
+@mixin breakpoint($screenSizeType) {
+  @if $screenSizeType == mobile {
+    @media (max-width: 799px) { @content; }
+  }
+  @else if $screenSizeType == tablet {
+    @media (min-width: 800px) and (max-width: 1199px) { @content; }
+  }
+  @else if $screenSizeType == desktop {
+    @media (min-width: 1200px) and (max-width: 1599px) { @content; }
+  }
+  @else if $screenSizeType == wide {
+    @media (min-width: 1600px) { @content; }
+  }
+  @else {
+    @warn "Breakpoint application only supports: mobile, tablet, desktop, wide";
+  }
+}

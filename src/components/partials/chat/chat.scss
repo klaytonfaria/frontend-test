@@ -1,0 +1,96 @@
+// Colors
+@import 'src/style-settings/colors';
+
+// Default component settings
+$chat-window-header-height: 35px;
+$chat-window-header-width: 100%;
+$chat-window-header-font-color: $color-white;
+$chat-window-header-background-color: $color-base;
+$chat-window-min-width: 320px;
+$chat-window-max-width: 330px;
+$chat-window-content-height:330px;
+$chat-window-border: 1px solid #DCDCDC;
+$chat-background-color: $color-white;
+$chat-font-color: $color-gray-dark;
+$chat-textarea-background-color: $color-light;
+$chat-textarea-border: 1px solid #dedede;
+
+// Global component settings (Can overwrite default component settings)
+@import 'src/style-settings/settings';
+
+// Component styles
+
+.chat-window {
+  min-width: $chat-window-min-width;
+  max-width: $chat-window-max-width;
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  z-index: 999;
+  background-color: $chat-background-color;
+  border-left: $chat-window-border;
+  border-right: $chat-window-border;
+  border-top: $chat-window-border;
+  box-shadow: 0px 0px 10px -1px #9a9a9a;
+}
+
+.chat-window-header {
+  display: block;
+  width: $chat-window-header-width;
+  height: $chat-window-header-height;
+  background-color: $chat-window-header-background-color;
+  color: $chat-window-header-font-color;
+  margin-bottom: 10px;
+}
+
+.chat-window-title {
+  float: left;
+  font-size: 14px;
+  padding: 10px;
+  width: 70%;
+  height: $chat-window-header-height;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-style: italic;
+}
+
+.chat-window-tools {
+  float: right;
+  width: 90px;
+  height: $chat-window-header-height;
+}
+
+.chat-window-content {
+  height: $chat-window-content-height;
+  padding: 0 10px 10px;
+}
+
+.chat-message-stream {
+  width: 100%;
+  height: 100%;
+  color: $color-gray-dark;
+  font-style: italic;
+  font-size: 14px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.chat-footer {
+  width: 100%;
+  height: 90px;
+  padding: 10px;
+  border-top: $chat-window-border;
+}
+
+.chat-message-composer {
+  width: 100%;
+  height: 70px;
+  background-color: $chat-textarea-background-color;
+  border: $chat-textarea-border;
+  resize: none;
+  padding: 5px;
+  color: #666;
+  font-size: 12px;
+  box-shadow: inset 0px 0px 14px -3px #9a9a9a;
+}

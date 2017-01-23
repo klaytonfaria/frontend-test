@@ -1,11 +1,4 @@
-import React from 'react';
-
-const Chat = () => (
-  <div>
-    chat
-  </div>
-);
-
-Chat.displayName = 'Chat';
+import Chat from './chat';
+import './chat.scss';
 
 export default Chat;

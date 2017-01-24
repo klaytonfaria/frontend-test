@@ -1,55 +1,76 @@
 import React, { Component, PropTypes } from 'react';
 
 // Components
-// import Header from '../partials/chat/header';
+import Header from './header';
+import Message from './message';
 
 class Chat extends Component {
-  static methodsAreOk() {
-    return true;
+  componentWillMount() {
+    this.setState({
+      data: this.props.data
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.setState({
+        data: this.props.data
+      });
+    }
   }
 
   render() {
+    const contentLoaded = this.state.data;
+    let content;
+
+    // Verify if content ins loaded
+    if (contentLoaded) {
+      const messages = contentLoaded.talkMessages,
+        MessageList = messages.map(data => <Message
+          key={data.id}
+          id={data.id}
+          userId={data.user.id}
+          profileId={data.user.perfilId}
+          profileName={data.user.name}
+          companyName={data.company ? data.company.name : ''}
+          time={data.message.time}
+          read={data.message.alreadyRead}
+          text={data.message.message}
+        />);
+
+      content = MessageList;
+    } else {
+      content = <span className="loading">carregando...</span>;
+    }
+
     return (
       <div id={this.props.id} className={`${this.props.baseClass} chat-window`}>
-
-        <div className="chat-window-header">
-          <span className="chat-window-title">Vaga: desenvolvedor Front-end</span>
-          <div className="chat-window-tools">
-            <span className="icon minimize" />
-            <span className="icon close" />
-          </div>
-        </div>
-
+        <Header />
         <div className="chat-window-content">
           <div className="chat-message-stream">
-
-            <div className="message">
-              <img src="http://www.piachievers.com/img/users-male-2.png" alt="Profile Name" className="profile-picture" width="65" />
-              <div className="message-content">
-                <div className="message-info">
-                  <span className="profile-name">Você</span>
-                  <span className="send-time">Enviado a poucos segundos</span>
-                </div>
-                <span className="message-text">Claro. A Catho fica próximo ao shopping Tamboré, ao lado do prédio da Engevix.</span>
-                <span className="message-reading-status pendding read" />
-              </div>
-            </div>
-
+            {content}
           </div>
         </div>
-
         <div className="chat-footer">
-          <textarea className="chat-message-composer" name="chat-message-composer" id={`${this.props.id}-message-composer`} cols="30" rows="10" placeholder="Digite aqui sua mensagem..." />
+          <textarea
+            className="chat-message-composer"
+            name="chat-message-composer"
+            id={`${this.props.id}-message-composer`}
+            cols="30" rows="10" placeholder="Digite aqui sua mensagem..."
+          />
         </div>
       </div>
     );
   }
 }
 
-
 Chat.propTypes = {
   id: PropTypes.string.isRequired,
-  baseClass: PropTypes.string
+  baseClass: PropTypes.string,
+  data: PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.bool
+  ])
 };
 
 Chat.defaultProps = {

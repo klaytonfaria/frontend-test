@@ -7,11 +7,12 @@ $chat-window-header-width: 100%;
 $chat-window-header-font-color: $color-white;
 $chat-window-header-background-color: $color-base;
 $chat-window-min-width: 320px;
-$chat-window-max-width: 330px;
+$chat-window-max-width: 430px;
 $chat-window-content-height:330px;
 $chat-window-border: 1px solid #DCDCDC;
 $chat-background-color: $color-white;
 $chat-font-color: $color-gray-dark;
+$chat-message-background-color:#DDD;
 $chat-textarea-background-color: $color-light;
 $chat-textarea-border: 1px solid #dedede;
 
@@ -23,6 +24,7 @@ $chat-textarea-border: 1px solid #dedede;
 .chat-window {
   min-width: $chat-window-min-width;
   max-width: $chat-window-max-width;
+  width: 100%;
   position: fixed;
   bottom: 0;
   right: 20px;
@@ -93,4 +95,86 @@ $chat-textarea-border: 1px solid #dedede;
   color: #666;
   font-size: 12px;
   box-shadow: inset 0px 0px 14px -3px #9a9a9a;
+}
+
+.chat-message {
+  margin: 10px 0;
+  overflow: auto;
+  &.me {
+    .chat-profile-picture {
+      float: right;
+    }
+    .chat-message-content {
+      margin: 0 15px 0 0;
+      float: right;
+      &:before {
+        border-color: transparent transparent transparent $chat-message-background-color;
+        right: -14px;
+        left: initial;
+      }
+    }
+  }
+}
+
+.chat-profile-picture {
+  float: left;
+}
+
+.chat-message-content {
+  float: left;
+  background-color: $chat-message-background-color;
+  display: block;
+  width: 74%;
+  padding: 7px;
+  position: relative;
+  margin: 0 0 0 15px;
+
+  &:before {
+    content: "";
+    border-style: solid;
+    display: block;
+    border-width: 7px;
+    border-color: transparent $chat-message-background-color transparent transparent;
+    position: absolute;
+    left: -14px;
+    top: 15px;
+  }
+}
+
+.chat-message-info {
+  width: 32%;
+  position: absolute;
+  bottom: 7px;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.chat-message-text {
+  float: right;
+  width: 63%;
+}
+
+.chat-message-profile-name {
+  display: block;
+}
+
+.chat-message-company-name {
+  display: block;
+  font-weight: 700;
+}
+
+.chat-message-send-time {
+  white-space: nowrap;
+  font-size: 11px;
+  margin-top: 2px;
+  display: block;
+}
+
+.chat-message-reading-status {
+  display: block;
+  height: 20px;
+  float: right;
+  clear: both;
+  width: 20px;
+  margin-top: 10px;
 }

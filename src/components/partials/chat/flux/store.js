@@ -1,6 +1,6 @@
 
 import { EventEmitter } from 'events';
-import { default as assign } from 'object-assign';
+import assign from 'object-assign';
 
 const ChatStore = assign({}, EventEmitter.prototype, {
   data: {},

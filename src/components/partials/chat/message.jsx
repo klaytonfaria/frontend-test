@@ -30,7 +30,7 @@ class Message extends Component {
   }
 
   render() {
-    const isPendingOrRead = this.state.read ? 'read' : 'pending',
+    const isPendingOrRead = this.state.read ? 'checked' : 'clock',
       sentByUser = this.state.profileId === 1 ? 'me' : '',
       Time = Moment(this.state.time)
         .locale('pt-BR')
@@ -47,7 +47,9 @@ class Message extends Component {
             <span className="chat-message-send-time">{`enviado ${Time}`}</span>
           </div>
           <span className="chat-message-text">{this.state.text}</span>
-          <span className={`chat-message-reading-status ${isPendingOrRead}`} />
+          <div className="chat-message-reading-status">
+            <span className={`icon icon-${isPendingOrRead}`} />
+          </div>
         </div>
       </div>
     );

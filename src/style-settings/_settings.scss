@@ -31,10 +31,28 @@ $button-color: $color-gray-dark;
 $button-border: 1px solid $color-gray;
 $button-border-hover: 1px solid $color-gray-dark;
 
-//Footer
+// Footer
 $footer-height: 41px;
 $footer-width: 100%;
 $footer-font-color: #666;
 $footer-border-top: 1px solid $color-base;
 $footer-info-border: 1px solid $color-base;
 
+// Chat
+$chat-window-header-height: 35px;
+$chat-window-header-width: 100%;
+$chat-window-header-font-color: $color-white;
+$chat-window-header-background-color: $color-base;
+$chat-window-header-icon-color: #80AED2;
+$chat-window-header-icon-size: 35px;
+$chat-window-message-icon-color: #888;
+$chat-window-message-icon-size: 24px;
+$chat-window-min-width: 320px;
+$chat-window-max-width: 600px;
+$chat-window-content-height:330px;
+$chat-window-border: 1px solid #DCDCDC;
+$chat-background-color: $color-white;
+$chat-font-color: $color-gray-dark;
+$chat-message-background-color:#DDD;
+$chat-textarea-background-color: $color-light;
+$chat-textarea-border: 1px solid #dedede;

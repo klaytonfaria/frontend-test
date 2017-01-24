@@ -46,18 +46,20 @@ class Chat extends Component {
     return (
       <div id={this.props.id} className={`${this.props.baseClass} chat-window`}>
         <Header />
-        <div className="chat-window-content">
-          <div className="chat-message-stream">
-            {content}
+        <div className="chat-window-wrapper">
+          <div className="chat-window-content">
+            <div className="chat-message-stream">
+              {content}
+            </div>
           </div>
-        </div>
-        <div className="chat-footer">
-          <textarea
-            className="chat-message-composer"
-            name="chat-message-composer"
-            id={`${this.props.id}-message-composer`}
-            cols="30" rows="10" placeholder="Digite aqui sua mensagem..."
-          />
+          <div className="chat-footer">
+            <textarea
+              className="chat-message-composer"
+              name="chat-message-composer"
+              id={`${this.props.id}-message-composer`}
+              cols="30" rows="10" placeholder="Digite aqui sua mensagem..."
+            />
+          </div>
         </div>
       </div>
     );

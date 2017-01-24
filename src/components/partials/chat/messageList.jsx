@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 // Components
 import Message from './message';
+import { USER_IMAGE_PATH } from '../../../constants';
 
 class MessageList extends Component {
 
@@ -33,6 +34,7 @@ class MessageList extends Component {
               userId={data.user.id}
               profileId={data.user.perfilId}
               profileName={data.user.name}
+              profilePicture={`${USER_IMAGE_PATH}/${data.user.id}.jpg`}
               companyName={data.company ? data.company.name : ''}
               time={data.message.time}
               read={data.message.alreadyRead}

@@ -12,6 +12,14 @@ const ChatStore = assign({}, EventEmitter.prototype, {
         ChatStore.emitChange();
       });
   },
+  send(msg) {
+    this.data.talkMessages = this.data.talkMessages || [];
+    this.data.talkMessages.push(msg);
+    this.emit('change');
+  },
+  getMessages() {
+    return this.data;
+  },
   emitChange() {
     this.emit('change');
   },

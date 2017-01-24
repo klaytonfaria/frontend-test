@@ -6,6 +6,12 @@ const ChatActions = {
       actionType: 'FETCH_ALL',
       url
     });
+  },
+  send: (msg) => {
+    ChatDispatcher.dispatch({
+      actionType: 'SEND_MESSAGE',
+      msg
+    });
   }
 };
 export default ChatActions;

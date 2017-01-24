@@ -9,8 +9,11 @@ ChatDispatcher.register((action) => {
     case 'FETCH_ALL':
       ChatStore.fetchAll(action.url);
       break;
+    case 'SEND_MESSAGE':
+      ChatStore.send(action.msg);
+      break;
     default:
-      ChatStore.filter(action.filterList);
+      ChatStore.fetchAll(action.url);
       break;
   }
 });

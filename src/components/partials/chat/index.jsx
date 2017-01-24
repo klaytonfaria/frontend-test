@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as Constants from '../../../constants';
 // Components
 import Chat from './chat';
 // Components actions
@@ -7,8 +8,6 @@ import ChatStore from './flux/store';
 // Components styles
 import './chat.scss';
 
-const URL = '/static/json/talk.json';
-
 class ChatContainer extends Component {
 
   componentWillMount() {
@@ -16,9 +15,9 @@ class ChatContainer extends Component {
       this.setState({
         data: chatData
       });
+      this.forceUpdate();
     });
-
-    ChatActions.fetchAll(URL);
+    ChatActions.fetchAll(Constants.API_ENDPOIN);
   }
 
   componentWillUnmount() {

@@ -1,0 +1,1 @@
+export const API_ENDPOIN = '/static/json/talk.json';

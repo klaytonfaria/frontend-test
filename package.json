@@ -7,14 +7,20 @@
     "start": "node app.js",
     "startNodemon": "nodemon app.js",
     "start:dev": "webpack-dev-server --progress --hot",
-    "build": "webpack --progress -p"
+    "build": "webpack --progress -p",
+    "lint": "eslint ./src/**/*.js* ./webpack.config.js -f stylish || true",
+    "test": "npm run lint",
+    "stats": "webpack --env stats --profile --json > stats.json"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "autoprefixer": "^6.6.1",
     "express": "^4.13.3",
+    "flux": "^3.1.2",
     "handlebars": "^4.0.6",
+    "moment": "^2.17.1",
+    "object-assign": "^4.1.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "shell-arguments": "^1.0.4"

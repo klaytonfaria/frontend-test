@@ -4,6 +4,7 @@ import Chat from './components/partials/chat';
 
 // Global style
 import './style-settings/base.scss';
+import Icons from './components/elements/icons/icons-font';
 
 const app = document.getElementById('help-chat');
 

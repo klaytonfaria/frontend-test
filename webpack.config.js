@@ -12,7 +12,7 @@ const path = require('path'),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new Extractor('styles/[hash]-[name].css'),
+    new Extractor({ filename: 'styles/[hash]-[name].css', disable: false, allChunks: true }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
@@ -25,9 +25,14 @@ const path = require('path'),
       template: '!!handlebars-loader!./src/components/templates/index.hbs',
       inject: false
     }),
-    new webpack.DefinePlugin({
-      postcss: [autoprefixer({ browsers: ['last 2 versions', 'ie 7-8', 'Firefox > 20'] })]
-    })
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        output: {
+          path: config.staticsPath
+        },
+        postcss: [autoprefixer({ browsers: ['last 2 versions', 'ie 7-8', 'Firefox > 20'] })]
+      }
+    }),
   ],
 
   devServer = {
@@ -76,9 +81,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /-font\.js$/,
+        loader: Extractor.extract({ loader: 'css-loader!postcss-loader!fontgen-loader' })
+      },
+      {
         test: /\.(sass|scss)$/,
         exclude: /node_modules/,
-        loader: Extractor.extract({ fallbackLoader: 'style-loader', loader: 'css-loader!sass-loader' })
+        loader: Extractor.extract({ fallbackLoader: 'style-loader', loader: 'css-loader!postcss-loader!sass-loader' })
       },
       {
         test: /\.(js|jsx)$/,

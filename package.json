@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "startNodemon": "nodemon app.js",
-    "start:dev": "webpack-dev-server --progress --hot",
+    "start:dev": "webpack-dev-server --progress --hot --host 0.0.0.0",
     "build": "webpack --progress -p",
     "lint": "eslint ./src/**/*.js* ./webpack.config.js -f stylish || true",
     "test": "npm run lint",

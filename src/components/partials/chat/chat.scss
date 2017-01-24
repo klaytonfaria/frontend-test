@@ -12,7 +12,7 @@ $chat-window-header-icon-size: 35px;
 $chat-window-message-icon-color: #888;
 $chat-window-message-icon-size: 24px;
 $chat-window-min-width: 320px;
-$chat-window-max-width: 600px;
+$chat-window-max-width: 530px;
 $chat-window-content-height:330px;
 $chat-window-border: 1px solid #DCDCDC;
 $chat-background-color: $color-white;
@@ -31,14 +31,19 @@ $chat-textarea-border: 1px solid #dedede;
   max-width: $chat-window-max-width;
   width: 100%;
   position: fixed;
-  bottom: 0;
   right: 20px;
+  bottom: 0;
   z-index: 999;
   background-color: $chat-background-color;
   border-left: $chat-window-border;
   border-right: $chat-window-border;
   border-top: $chat-window-border;
   box-shadow: 0px 0px 10px -1px #9a9a9a;
+  @include breakpoint(mobile) {
+    right: 0;
+    height: 100%;
+    max-width: 100%;
+  }
 }
 
 .chat-window-header {
@@ -75,7 +80,7 @@ $chat-textarea-border: 1px solid #dedede;
 
 .chat-window-tools {
   float: right;
-  width: $chat-window-header-icon-size * 3; // until 3 icons
+  width: $chat-window-header-icon-size * 2; // until 2 icons
   height: $chat-window-header-height;
   color: $chat-window-header-icon-color;
 
@@ -98,12 +103,24 @@ $chat-textarea-border: 1px solid #dedede;
       color: $color-white;
     }
   }
+
+  .btn-minimize,
+  .btn-restore, {
+    @include breakpoint(mobile) {
+      display: none;
+    }
+  }
 }
 
 .chat-window-content {
   height: $chat-window-content-height;
+  width: 100%;
+  overflow: hidden;
   padding: 0 10px 10px;
   margin-top: 10px;
+  @include breakpoint(mobile) {
+    height: calc(100% - 135px);
+  }
 }
 
 .chat-message-stream {
@@ -179,13 +196,15 @@ $chat-textarea-border: 1px solid #dedede;
 
 .chat-profile-picture {
   float: left;
+  width: 65px;
+  height: 65px;
 }
 
 .chat-message-content {
   float: left;
   background-color: $chat-message-background-color;
   display: block;
-  width: 74%;
+  width: 73%;
   padding: 7px;
   position: relative;
   margin: 0 0 0 15px;
@@ -203,7 +222,8 @@ $chat-textarea-border: 1px solid #dedede;
 }
 
 .chat-message-info {
-  width: 50%;
+  width: 100%;
+  max-width: 180px;
   position: absolute;
   bottom: 7px;
   font-size: 12px;
@@ -212,7 +232,11 @@ $chat-textarea-border: 1px solid #dedede;
 
 .chat-message-text {
   float: right;
-  width: 57%;
+  width: 65%;
+  @include breakpoint(mobile) {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 
 .chat-message-profile-name {

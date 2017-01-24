@@ -11,7 +11,8 @@ class Message extends Component {
       companyName: this.props.companyName,
       text: this.props.text,
       time: this.props.time,
-      read: this.props.read
+      read: this.props.read,
+      sentPrevious: this.props.sentPrevious
     });
   }
 
@@ -24,7 +25,8 @@ class Message extends Component {
         companyName: this.props.companyName,
         text: this.props.text,
         time: this.props.time,
-        read: this.props.read
+        read: this.props.read,
+        sentPrevious: this.props.sentPrevious
       });
     }
   }
@@ -32,6 +34,7 @@ class Message extends Component {
   render() {
     const isPendingOrRead = this.state.read ? 'checked' : 'clock',
       sentByUser = this.state.profileId === 1 ? 'me' : '',
+      showImage = !this.state.sentPrevious,
       Time = Moment(this.state.time)
         .locale('pt-BR')
         .startOf('minutes')
@@ -39,7 +42,14 @@ class Message extends Component {
 
     return (
       <div id={this.props.id} className={`chat-message user-${this.state.userId} ${sentByUser}`}>
-        <img src={this.props.profilePicture} alt={this.state.profileName} className="chat-profile-picture" width="65" />
+        <div className="chat-profile-picture">
+          <img
+            src={this.props.profilePicture}
+            alt={this.state.profileName}
+            className={`chat-profile-picture ${showImage ? '' : 'hide'}`}
+            width="65"
+          />
+        </div>
         <div className="chat-message-content">
           <div className="chat-message-info">
             <span className="chat-message-profile-name">{this.state.profileName}</span>
@@ -65,7 +75,8 @@ Message.propTypes = {
   companyName: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   time: PropTypes.number.isRequired,
-  read: PropTypes.bool.isRequired
+  read: PropTypes.bool.isRequired,
+  sentPrevious: PropTypes.bool.isRequired
 };
 
 Message.defaultProps = {
@@ -75,7 +86,8 @@ Message.defaultProps = {
   profileId: 1,
   text: '',
   time: new Date().getTime(),
-  read: false
+  read: false,
+  sentPrevious: false
 };
 
 export default Message;

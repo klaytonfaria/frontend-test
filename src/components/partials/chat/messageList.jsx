@@ -18,17 +18,29 @@ class MessageList extends Component {
     // Verify if content is loaded
     if (contentLoaded) {
       const messages = contentLoaded.talkMessages,
-        Messages = messages.map(data => <Message
-          key={data.id}
-          id={data.id}
-          userId={data.user.id}
-          profileId={data.user.perfilId}
-          profileName={data.user.name}
-          companyName={data.company ? data.company.name : ''}
-          time={data.message.time}
-          read={data.message.alreadyRead}
-          text={data.message.message}
-        />);
+        Messages = messages.map((data, i, all) => {
+          const previousMessage = all[i - 1];
+          let userSentPreviousMessage = false;
+
+          if (previousMessage) {
+            userSentPreviousMessage = data.user.perfilId === previousMessage.user.perfilId;
+          }
+
+          return (
+            <Message
+              key={data.id}
+              id={data.id}
+              userId={data.user.id}
+              profileId={data.user.perfilId}
+              profileName={data.user.name}
+              companyName={data.company ? data.company.name : ''}
+              time={data.message.time}
+              read={data.message.alreadyRead}
+              text={data.message.message}
+              sentPrevious={userSentPreviousMessage}
+            />
+          );
+        });
 
       content = Messages;
     } else {

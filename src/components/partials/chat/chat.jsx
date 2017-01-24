@@ -2,7 +2,21 @@ import React, { Component, PropTypes } from 'react';
 
 // Components
 import Header from './header';
-import Message from './message';
+import MessageList from './messageList';
+import MessageComposer from './messageComposer';
+
+const scrollToBottom = (scrollDuration = 100) => {
+  const messageStream = document.getElementById('chat-message-stream'),
+    scrollStep = messageStream.scrollHeight / scrollDuration,
+    scrollInterval = setInterval(() => {
+      const scrollSize = messageStream.scrollHeight - messageStream.offsetHeight;
+      if (messageStream.scrollTop !== scrollSize) {
+        messageStream.scrollTop += scrollStep;
+      } else {
+        clearInterval(scrollInterval);
+      }
+    }, 1);
+};
 
 class Chat extends Component {
 
@@ -20,46 +34,22 @@ class Chat extends Component {
     }
   }
 
+  componentDidUpdate() {
+    scrollToBottom();
+  }
+
   render() {
-    const contentLoaded = this.state.data;
-    let content;
-
-    // Verify if content is loaded
-    if (contentLoaded) {
-      const messages = contentLoaded.talkMessages,
-        MessageList = messages.map(data => <Message
-          key={data.id}
-          id={data.id}
-          userId={data.user.id}
-          profileId={data.user.perfilId}
-          profileName={data.user.name}
-          companyName={data.company ? data.company.name : ''}
-          time={data.message.time}
-          read={data.message.alreadyRead}
-          text={data.message.message}
-        />);
-
-      content = MessageList;
-    } else {
-      content = <span className="loading">carregando...</span>;
-    }
-
     return (
       <div id={this.props.id} className={`${this.props.baseClass} chat-window`}>
         <Header />
         <div className="chat-window-wrapper">
           <div className="chat-window-content">
-            <div className="chat-message-stream">
-              {content}
+            <div id="chat-message-stream" className="chat-message-stream">
+              <MessageList data={this.state.data} />
             </div>
           </div>
           <div className="chat-footer">
-            <textarea
-              className="chat-message-composer"
-              name="chat-message-composer"
-              id={`${this.props.id}-message-composer`}
-              cols="30" rows="10" placeholder="Digite aqui sua mensagem..."
-            />
+            <MessageComposer />
           </div>
         </div>
       </div>

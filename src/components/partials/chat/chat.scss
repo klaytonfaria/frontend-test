@@ -131,6 +131,7 @@ $chat-textarea-border: 1px solid #dedede;
   font-size: 14px;
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .chat-footer {

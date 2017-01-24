@@ -35,6 +35,9 @@ $footer-info-border: 1px solid $color-base;
     @include breakpoint(mobile) {
       display: none;
     }
+    @include breakpoint(tablet) {
+      display: none;
+    }
   }
   .footer-info {
     float: left;

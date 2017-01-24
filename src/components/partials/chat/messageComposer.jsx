@@ -36,7 +36,7 @@ const composeMessageObj = msg => ({
       className="chat-message-composer"
       name="chat-message-composer"
       placeholder="Digite aqui sua mensagem..."
-      onKeyUp={e => handleSendMessage(e)}
+      onKeyPress={e => handleSendMessage(e)}
     />
   );
 

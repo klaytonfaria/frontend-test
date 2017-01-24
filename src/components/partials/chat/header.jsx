@@ -76,15 +76,16 @@ class Header extends Component {
   }
 
   render() {
+    const minimizeRestore = this.state.minimized ? 'restore' : 'minimize';
     return (
       <div className="chat-window-header">
         <span className="chat-window-title">Vaga: desenvolvedor Front-end</span>
         <div className="chat-window-tools">
-          <button type="button" className="icon" onClick={this.handleCloseWindow.bind(this)}>
+          <button type="button" className="icon btn-close" onClick={this.handleCloseWindow.bind(this)}>
             <span className="icon icon-close" />
           </button>
-          <button type="button" className="icon" onClick={this.handleToggleWindow.bind(this)}>
-            <span className="icon icon-minimize" />
+          <button type="button" className={`icon btn-${minimizeRestore}`} onClick={this.handleToggleWindow.bind(this)}>
+            <span className={`icon icon-${minimizeRestore}`} />
           </button>
         </div>
       </div>

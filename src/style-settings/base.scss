@@ -25,6 +25,10 @@ body,
   margin: 0 auto;
 }
 
+.hide {
+  display: none;
+}
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -35,6 +39,10 @@ body {
   :before {
     box-sizing: border-box;
   }
+}
+
+button {
+  outline: none;
 }
 
 a {

@@ -5,13 +5,14 @@ import Header from './header';
 import Message from './message';
 
 class Chat extends Component {
+
   componentWillMount() {
     this.setState({
       data: this.props.data
     });
   }
 
-  componentDidUpdate(prevProps) {
+  componentWillReceiveProps(prevProps) {
     if (prevProps !== this.props) {
       this.setState({
         data: this.props.data
@@ -23,7 +24,7 @@ class Chat extends Component {
     const contentLoaded = this.state.data;
     let content;
 
-    // Verify if content ins loaded
+    // Verify if content is loaded
     if (contentLoaded) {
       const messages = contentLoaded.talkMessages,
         MessageList = messages.map(data => <Message
@@ -77,7 +78,8 @@ Chat.propTypes = {
 
 Chat.defaultProps = {
   id: 'chat',
-  baseClass: ''
+  baseClass: '',
+  data: {}
 };
 
 export default Chat;

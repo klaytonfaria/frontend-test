@@ -11,9 +11,9 @@ import './chat.scss';
 class ChatContainer extends Component {
 
   componentWillMount() {
-    ChatStore.addChangeListener((chatData) => {
+    ChatStore.addChangeListener(() => {
       this.setState({
-        data: chatData
+        data: ChatStore.getMessages()
       });
       this.forceUpdate();
     });

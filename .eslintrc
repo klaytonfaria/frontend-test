@@ -1,4 +1,7 @@
 {
+  "plugins": [
+    "react"
+  ],
  "extends": "airbnb",
  "env": {
    "es6": true,
@@ -14,7 +17,11 @@
 	"blockBindings": true,
 	"arrowFunctions": true
 },
+"options": {
+  "code": 120
+},
  "rules": {
+    "max-len": [2, {"code": 120, "tabWidth": 2, "ignoreUrls": true}],
     "no-console": 1,
     "eol-last": 0,
     "one-var": [1, "always"],
@@ -31,7 +38,8 @@
     "import/extensions": 1,
     "react/jsx-filename-extension": 1,
     "react/prop-types": 1,
-    "react/forbid-prop-types": 1,
-    "react/jsx-no-duplicate-props": 2
+    "react/forbid-prop-types": 2,
+    "react/jsx-no-duplicate-props": 2,
+    "react/no-unused-prop-types": 1
  }
 }

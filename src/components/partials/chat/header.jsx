@@ -4,26 +4,38 @@ const closeWindow = () => {
     document.getElementById('chat').style.display = 'none';
     return true;
   },
-  minimize = (el, chatClasses) => {
-    el.setAttribute('class', chatClasses.replace('minimized', ''));
-    return false;
-  },
-  restore = (el, chatClasses) => {
-    el.setAttribute('class', `${chatClasses} minimized`);
+
+  openWindow = () => {
+    document.getElementById('chat').style.display = 'block';
     return true;
   },
-  toggleWindow = () => {
+
+  minimize = () => {
     const chat = document.getElementById('chat'),
       chatClasses = chat.getAttribute('class');
 
-    let isMinimized = false;
+    chat.setAttribute('class', chatClasses.replace('minimized', ''));
+    return false;
+  },
 
-    if (chatClasses.indexOf('minimized') >= 0) {
-      isMinimized = minimize(chat, chatClasses);
+  restore = () => {
+    const chat = document.getElementById('chat'),
+      chatClasses = chat.getAttribute('class');
+
+    chat.setAttribute('class', `${chatClasses} minimized`);
+    return true;
+  },
+
+  toggleWindow = (isMinimized = false) => {
+    const chatClasses = document.getElementById('chat').getAttribute('class');
+    let shouldMinimize = (chatClasses.indexOf('minimized') >= 0);
+
+    if (shouldMinimize && !isMinimized) {
+      shouldMinimize = minimize();
     } else {
-      isMinimized = restore(chat, chatClasses);
+      shouldMinimize = restore();
     }
-    return isMinimized;
+    return shouldMinimize;
   };
 
 class Header extends Component {
@@ -34,6 +46,19 @@ class Header extends Component {
       minimized: false,
       closed: false
     };
+  }
+
+  componentDidUpdate() {
+    if (this.state.minimized) {
+      restore();
+    } else {
+      minimize();
+    }
+    if (this.state.closed) {
+      closeWindow();
+    } else {
+      openWindow();
+    }
   }
 
   handleToggleWindow() {

@@ -39,6 +39,11 @@ const path = require('path'),
     lazy: false,
     inline: true,
     hot: true,
+    proxy: {
+      '/static': {
+        target: 'http://localhost:3000'
+      }
+    },
     stats: {
       assets: true,
       children: false,

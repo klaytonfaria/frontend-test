@@ -3,10 +3,11 @@ const path = require('path'),
   autoprefixer = require('autoprefixer'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   Extractor = require('extract-text-webpack-plugin'),
+  CopyWebpackPlugin = require('copy-webpack-plugin'),
   config = {
     sourcePath: path.join(__dirname, './src'),
     staticsPath: path.join(__dirname, './public'),
-    publicPath: ''
+    publicPath: process.env.NODE_ENV === 'production' ? '/static/' : ''
   },
   plugins = [
     new webpack.NamedModulesPlugin(),
@@ -21,18 +22,25 @@ const path = require('path'),
     new HtmlWebpackPlugin({
       publicPath: config.publicPath,
       // filename: '../views/home/chat.html',
-      filename: 'index.html',
+      filename: process.env.NODE_ENV === 'production' ? '../views/home/chat.html' : 'index.html',
       template: '!!handlebars-loader!./src/components/templates/index.hbs',
       inject: false
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
         output: {
-          path: config.staticsPath
+          path: config.staticsPath,
+          publicPath: config.publicPath
         },
         postcss: [autoprefixer({ browsers: ['last 2 versions', 'ie 7-8', 'Firefox > 20'] })]
       }
     }),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(config.sourcePath, '/images/**/*'),
+        to: path.join(config.staticsPath, '/')
+      }
+    ])
   ],
 
   devServer = {
@@ -44,11 +52,17 @@ const path = require('path'),
     lazy: false,
     inline: true,
     hot: true,
-    proxy: {
-      '/static': {
+    proxy: [
+      {
+        context: '/static/images',
+        target: 'http://localhost:3001/images',
+        pathRewrite: {"^/static/images" : ""}
+      },
+      {
+        context: '/static',
         target: 'http://localhost:3000'
-      }
-    },
+      },
+    ],
     stats: {
       assets: true,
       children: false,

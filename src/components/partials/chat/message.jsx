@@ -38,17 +38,20 @@ class Message extends Component {
       Time = Moment(this.state.time)
         .locale('pt-BR')
         .startOf('minutes')
-        .fromNow();
+        .fromNow(),
+      Image = showImage ? (
+        <img
+          src={this.props.profilePicture}
+          alt={this.state.profileName}
+          className={`chat-profile-picture ${showImage ? '' : 'hide'}`}
+          width="65"
+        />
+      ) : '';
 
     return (
       <div id={this.props.id} className={`chat-message user-${this.state.userId} ${sentByUser}`}>
         <div className="chat-profile-picture">
-          <img
-            src={this.props.profilePicture}
-            alt={this.state.profileName}
-            className={`chat-profile-picture ${showImage ? '' : 'hide'}`}
-            width="65"
-          />
+          {Image}
         </div>
         <div className="chat-message-content">
           <div className="chat-message-info">

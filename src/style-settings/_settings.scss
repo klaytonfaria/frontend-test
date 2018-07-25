@@ -1,0 +1,59 @@
+// Importing colors set
+@import "src/style-settings/colors";
+
+// Mixins
+@import "src/style-settings/mixins";
+
+// COMPONENTS SETTINGS
+
+// BASE
+$base-background-color: $color-white;
+
+// Header
+$header-height: 71px;
+$header-width: 100%;
+$header-background-color: #FFF;
+$header-background-color-dark: #005ca2;
+$header-font-color: #666;
+$header-font-color-dark: #FFF;
+$header-border-bottom: 1px solid #f5f5f5;
+
+// Logo
+$logo-width: 84px;
+$logo-height: 45px;
+$logo-width-small: 50px;
+$logo-height-small: 30px;
+
+// Buttons
+$button-font-size: 16px;
+$button-font-size-small: 84px;
+$button-color: $color-gray-dark;
+$button-border: 1px solid $color-gray;
+$button-border-hover: 1px solid $color-gray-dark;
+
+// Footer
+$footer-height: 41px;
+$footer-width: 100%;
+$footer-font-color: #666;
+$footer-border-top: 1px solid $color-base;
+$footer-info-border: 1px solid $color-base;
+
+// Chat
+$chat-transitions-time: .1s;
+$chat-window-header-height: 35px;
+$chat-window-header-width: 100%;
+$chat-window-header-font-color: $color-white;
+$chat-window-header-background-color: $color-base;
+$chat-window-header-icon-color: #80AED2;
+$chat-window-header-icon-size: 35px;
+$chat-window-message-icon-color: #888;
+$chat-window-message-icon-size: 24px;
+$chat-window-min-width: 320px;
+$chat-window-max-width: 530px;
+$chat-window-content-height:330px;
+$chat-window-border: 1px solid #DCDCDC;
+$chat-background-color: $color-white;
+$chat-font-color: $color-gray-dark;
+$chat-message-background-color:#DDD;
+$chat-textarea-background-color: $color-light;
+$chat-textarea-border: 1px solid #dedede;

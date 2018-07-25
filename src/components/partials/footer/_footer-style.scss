@@ -1,0 +1,58 @@
+// Default component settings
+$footer-height: 41px;
+$footer-width: 100%;
+$footer-font-color: #666;
+$footer-border-top: 1px solid $color-base;
+$footer-info-border: 1px solid $color-base;
+
+// Global component settings (Can overwrite default component settings)
+@import 'src/style-settings/settings';
+
+// Component styles
+
+.footer-container,
+.page-footer {
+  min-height: $footer-height;
+  width: $footer-width;
+  position: relative;
+  overflow: auto;
+}
+
+.page-footer {
+  background-image: linear-gradient(#DEDEDE, #F1F1F1);;
+  border-top: $footer-border-top;
+  color: $footer-font-color;
+  padding: 8px;
+
+  &.fixed {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+  }
+
+  .footer-logo-link {
+    float: left;
+    @include breakpoint(mobile) {
+      display: none;
+    }
+    @include breakpoint(tablet) {
+      display: none;
+    }
+  }
+  .footer-info {
+    float: left;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .footer-info-item {
+    float: left;
+    margin: 3px 0;
+    padding: 0 13px;
+    white-space: nowrap;
+    border-right: $footer-info-border;
+
+    &.last {
+      border: none;
+    }
+  }
+}

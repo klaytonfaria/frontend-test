@@ -1,0 +1,75 @@
+// BASE style
+
+// Global settings
+@import 'src/style-settings/settings';
+
+// Components
+@import 'src/components/partials/header/header-style';
+@import 'src/components/elements/logo/logo-style';
+@import 'src/components/elements/buttons/buttons-style';
+@import 'src/components/partials/footer/footer-style';
+
+html,
+body,
+.page-container {
+  height: 100%;
+}
+.page-content {
+  min-height: -webkit-calc(100% - 112px);
+}
+
+.content-wrapper {
+  width: 98%;
+  max-width: 1180px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+.hide {
+  display: none;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Arial', sans-serif;
+  background-color: $base-background-color;
+  *,
+  :after,
+  :before {
+    box-sizing: border-box;
+  }
+}
+
+button {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: $color-base;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+header,
+footer {
+  display: block;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

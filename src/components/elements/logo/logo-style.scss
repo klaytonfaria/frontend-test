@@ -1,0 +1,32 @@
+// Default component settings
+$logo-width: 84px;
+$logo-height: 45px;
+$logo-width-small: 50px;
+$logo-height-small: 30px;
+
+// Global component settings (Can overwrite default component settings)
+@import 'src/style-settings/settings';
+
+// Component styles
+
+img.logo {
+  text-indent: 0;
+  background-image: none;
+}
+
+.logo {
+  width: $logo-width;
+  height: $logo-height;
+  display: block;
+  text-indent: -99999px;
+  overflow: hidden;
+  background-image: url("/static/images/logo.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &.small {
+    width: $logo-width-small;
+    height: $logo-height-small;
+  }
+}
+
